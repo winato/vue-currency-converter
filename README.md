@@ -20,5 +20,13 @@ yarn build
 yarn lint
 ```
 
+### Deploy
+```
+yarn build
+```
+```
+firebase deploy
+```
+
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
