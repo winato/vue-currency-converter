@@ -1,33 +1,41 @@
 <template>
-  <Container>
-    <h1 class="converter-title">
+  <div>
+    <h1 class="converter__title">
       Convert
     </h1>
-    <Row
-      :amount.sync="from_amount"
-      :currency.sync="from_currency"
-      :options="currecyOptions"
-    />
-    =
-    <Row
-      :amount.sync="to_amount"
-      :currency.sync="to_currency"
-      :options="currecyOptions"
-    />
-  </Container>
+    <div class="converter">
+      <Row
+        :amount.sync="from_amount"
+        :currency.sync="from_currency"
+        :options="currecyOptions"
+      />
+      <div class="converter__equal">
+      =
+      </div>
+      <Row
+        :amount.sync="to_amount"
+        :currency.sync="to_currency"
+        :options="currecyOptions"
+      />
+    </div>
+  </div>
 </template>
 
 <script>
-import { mapActions, mapGetters, mapState } from 'vuex';
+import {
+  mapActions,
+  mapGetters,
+  mapState,
+  mapMutations,
+} from 'vuex';
 import Row from '@/components/Row.vue';
-import Container from '@/components/common/Container.vue';
+import filtersMixin from '@/mixins/filters';
 
 export default {
   name: 'TheCalculator',
 
   components: {
     Row,
-    Container,
   },
 
   data: () => ({
@@ -37,11 +45,7 @@ export default {
     to_currency: 'USD',
   }),
 
-  filters: {
-    formatNumber(number) {
-      return Number(number.toFixed(5));
-    },
-  },
+  mixins: [filtersMixin],
 
   watch: {
     from_currency: {
@@ -61,7 +65,8 @@ export default {
     },
 
     from_amount: {
-      handler() {
+      handler(amount) {
+        this.setFromAmount(amount);
         this.calcTo();
       },
     },
@@ -84,6 +89,7 @@ export default {
 
   methods: {
     ...mapActions('main', ['getRates']),
+    ...mapMutations('main', ['setFromAmount']),
 
     calcTo() {
       const calc = this.from_amount * this.currentRate;
@@ -99,7 +105,27 @@ export default {
 </script>
 
 <style lang="scss">
-  .converter-title {
-    text-align: center;
+  .converter {
+    position: relative;
+    z-index: 3;
+    padding: .3rem;
+    border-radius: .5rem;
+    background-color: rgb(255, 255, 255);
+    box-shadow: rgb(35, 55, 80 / 30%) 0 .25rem .875rem;
+
+    @media screen and (min-width: 576px) {
+      padding: 3rem;
+    }
+
+    &__title {
+      text-align: center;
+      color: #fff;
+      font-size: 2.5rem;
+    }
+
+    &__equal {
+      text-align: center;
+      font-size: 2rem;
+    }
   }
 </style>

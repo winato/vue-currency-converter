@@ -72,13 +72,13 @@ export default {
     display: flex;
 
     &__input {
-      max-width: 250px;
-      margin: 5px;
+      max-width: 15.625rem;
+      margin: 0.25rem;
     }
 
     &__select {
-      width: 150px;
-      margin: 5px;
+      width: 9.375rem;
+      margin: 0.25rem;
     }
   }
 </style>
