@@ -1,11 +1,13 @@
 <template>
-  <div>
+  <div class="converter-row">
     <NumberInput
+      class="converter-row__input"
       v-model.number="amountModel"
       type="number"
       @input="onInputAmount"
     />
     <Select
+      class="converter-row__select"
       @input="onChangeCurrency"
       :value="currency"
       :options="options"
@@ -27,8 +29,14 @@ export default {
 
   data() {
     return {
-      amountModel: this.amount,
+      amountModel: 0,
     };
+  },
+
+  watch: {
+    amount(value) {
+      this.amountModel = value;
+    },
   },
 
   props: {
@@ -51,8 +59,26 @@ export default {
       this.$emit('update:amount', amount);
     },
     onChangeCurrency(currency) {
-      this.$emit('update:currency', currency);
+      this.$emit('update:currency', currency.value);
     },
   },
 };
 </script>
+
+<style lang="scss">
+  .converter-row {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+
+    &__input {
+      max-width: 250px;
+      margin: 5px;
+    }
+
+    &__select {
+      width: 150px;
+      margin: 5px;
+    }
+  }
+</style>

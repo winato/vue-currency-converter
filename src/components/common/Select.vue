@@ -1,18 +1,21 @@
 <template>
-  <select @change="onChange">
-    <option
-      :value="option.value"
-      :key="option.value"
-      v-for="option in options"
-    >
-      {{ option.label }}
-    </option>
-  </select>
+  <VSelect
+    :value="value"
+    :options="options"
+    @input="onInput"
+    :clearable="false"
+  />
 </template>
 
 <script>
+import VSelect from 'vue-select';
+
 export default {
-  name: 'Selct',
+  name: 'Select',
+
+  components: {
+    VSelect,
+  },
 
   props: {
     value: {
@@ -26,9 +29,13 @@ export default {
   },
 
   methods: {
-    onChange(e) {
-      this.$emit('input', e.target.value);
+    onInput(value) {
+      this.$emit('input', value);
     },
   },
 };
 </script>
+
+<style lang="scss">
+  @import "vue-select/src/scss/vue-select.scss";
+</style>

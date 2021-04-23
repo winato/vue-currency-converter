@@ -1,6 +1,7 @@
 <template>
   <input
-    v-bind="$attrs"
+    :value="value"
+    class="input"
     @input="onInput"
   >
 </template>
@@ -25,5 +26,15 @@ export default {
 </script>
 
 <style lang="scss">
-
+  .input {
+    height: 34px;
+    width: 100%;
+    appearance: none;
+    display: flex;
+    padding: 4px;
+    background: none;
+    border: 1px solid rgba(60, 60, 60, 0.26);
+    border-radius: 4px;
+    white-space: normal;
+  }
 </style>
