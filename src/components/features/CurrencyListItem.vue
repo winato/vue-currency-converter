@@ -35,14 +35,14 @@ export default {
 </script>
 
 <style lang="scss">
-.currency-list-item {
-  width: 100%;
-  color: #fff;
-  padding: .5rem 0;
-  border-bottom: 1px solid rgba(255, 255, 255, .2);
+  .currency-list-item {
+    width: 100%;
+    color: #fff;
+    padding: .5rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, .2);
 
-  @media screen and (min-width: 576px) {
-    width: 50%;
+    @media screen and (min-width: 576px) {
+      width: 50%;
+    }
   }
-}
 </style>

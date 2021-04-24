@@ -1,8 +1,11 @@
 <template>
   <div>
-    <h1 class="converter__title">
+    <Heading
+      tag="h1"
+      :center="true"
+    >
       Convert
-    </h1>
+    </Heading>
     <div class="converter">
       <Row
         :amount.sync="from_amount"
@@ -30,12 +33,14 @@ import {
 } from 'vuex';
 import Row from '@/components/Row.vue';
 import filtersMixin from '@/mixins/filters';
+import Heading from '@/components/common/Heading.vue';
 
 export default {
   name: 'TheCalculator',
 
   components: {
     Row,
+    Heading,
   },
 
   data: () => ({
@@ -115,12 +120,6 @@ export default {
 
     @media screen and (min-width: 576px) {
       padding: 3rem;
-    }
-
-    &__title {
-      text-align: center;
-      color: #fff;
-      font-size: 2.5rem;
     }
 
     &__equal {

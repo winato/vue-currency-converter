@@ -36,6 +36,7 @@ export default {
     border: 1px solid rgba(60, 60, 60, 0.26);
     border-radius: 0.25rem;;
     white-space: normal;
+    outline: none;
 
     &::-webkit-outer-spin-button,
     &::-webkit-inner-spin-button {
