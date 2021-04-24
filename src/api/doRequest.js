@@ -5,14 +5,11 @@ const doRequest = ({
   data,
   params,
   url,
-}) => {
-  console.log('1', params);
-  return axios({
-    method,
-    data,
-    params,
-    url,
-  });
-};
+}) => axios({
+  method,
+  data,
+  params,
+  url,
+});
 
 export default doRequest;
