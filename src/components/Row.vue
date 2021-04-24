@@ -57,6 +57,7 @@ export default {
   methods: {
     onInputAmount(amount) {
       this.$emit('update:amount', amount);
+      this.$emit('amount-change', amount);
     },
     onChangeCurrency(currency) {
       this.$emit('update:currency', currency.value);

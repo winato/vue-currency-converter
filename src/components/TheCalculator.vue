@@ -11,6 +11,7 @@
         :amount.sync="from_amount"
         :currency.sync="from_currency"
         :options="currecyOptions"
+        @amount-change="(amount) => onChangeAmount(amount, true)"
       />
       <div class="converter__equal">
       =
@@ -19,6 +20,7 @@
         :amount.sync="to_amount"
         :currency.sync="to_currency"
         :options="currecyOptions"
+        @amount-change="(amount) => onChangeAmount(amount)"
       />
     </div>
   </div>
@@ -68,19 +70,6 @@ export default {
         this.calcTo();
       },
     },
-
-    from_amount: {
-      handler(amount) {
-        this.setFromAmount(amount);
-        this.calcTo();
-      },
-    },
-
-    to_amount: {
-      handler() {
-        this.calcFrom();
-      },
-    },
   },
 
   computed: {
@@ -95,6 +84,15 @@ export default {
   methods: {
     ...mapActions('main', ['getRates']),
     ...mapMutations('main', ['setFromAmount']),
+
+    onChangeAmount(amount, isFrom = false) {
+      if (isFrom) {
+        this.setFromAmount(amount);
+        this.calcTo();
+      } else {
+        this.calcFrom();
+      }
+    },
 
     calcTo() {
       const calc = this.from_amount * this.currentRate;
