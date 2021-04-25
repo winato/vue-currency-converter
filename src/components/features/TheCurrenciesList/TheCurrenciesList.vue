@@ -1,6 +1,6 @@
 <template>
   <div class="currencies-list">
-    <CurrencyListItem
+    <CurrenciesListItem
       v-for="(rate, currency) in rates"
       :key="currency"
       :currency="currency"
@@ -11,13 +11,13 @@
 
 <script>
 import { mapState } from 'vuex';
-import CurrencyListItem from './CurrencyListItem.vue';
+import CurrenciesListItem from '@/components/features/TheCurrenciesList/CurrenciesListItem.vue';
 
 export default {
-  name: 'CurrenciesList',
+  name: 'TheCurrenciesList',
 
   components: {
-    CurrencyListItem,
+    CurrenciesListItem,
   },
 
   computed: {

@@ -6,6 +6,9 @@ const actions = {
       .then(({ data }) => {
         commit('setRates', data);
         commit('setFromCurrency', data);
+      })
+      .catch((error) => {
+        throw new Error(error);
       });
   },
 };

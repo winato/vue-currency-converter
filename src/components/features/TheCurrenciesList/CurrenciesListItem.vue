@@ -9,13 +9,14 @@ import { mapState } from 'vuex';
 import filtersMixin from '@/mixins/filters';
 
 export default {
-  name: 'CurrencyListItem',
+  name: 'CurrenciesListItem',
 
   props: {
     currency: {
       type: String,
       required: true,
     },
+
     rate: {
       type: Number,
       requried: true,

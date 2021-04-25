@@ -1,10 +1,10 @@
 <template>
   <component
     :is="tag"
-    class="heading"
     :class="{
       'heading--center': center
     }"
+    class="heading"
   >
     <slot/>
   </component>
@@ -19,6 +19,7 @@ export default {
       type: String,
       required: true,
     },
+
     center: {
       type: Boolean,
       default: false,

@@ -2,8 +2,8 @@
   <VSelect
     :value="value"
     :options="options"
-    @input="onInput"
     :clearable="false"
+    @input="onInput"
   />
 </template>
 
@@ -22,6 +22,7 @@ export default {
       type: String,
       default: '',
     },
+
     options: {
       type: Array,
       required: true,

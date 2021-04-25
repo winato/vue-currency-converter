@@ -1,13 +1,13 @@
 <template>
   <div class="converter">
-    <Heading
+    <AppHeading
       tag="h1"
       :center="true"
     >
       Convert
-    </Heading>
+    </AppHeading>
     <div class="converter__container">
-      <Row
+      <CalculatorRow
         :amount.sync="from_amount"
         :currency.sync="from_currency"
         :options="currecyOptions"
@@ -16,7 +16,7 @@
       <div class="converter__equal">
       =
       </div>
-      <Row
+      <CalculatorRow
         :amount.sync="to_amount"
         :currency.sync="to_currency"
         :options="currecyOptions"
@@ -33,17 +33,19 @@ import {
   mapState,
   mapMutations,
 } from 'vuex';
-import Row from '@/components/Row.vue';
+import CalculatorRow from '@/components/features/TheCalculator/CalculatorRow.vue';
 import filtersMixin from '@/mixins/filters';
-import Heading from '@/components/common/Heading.vue';
+import AppHeading from '@/components/common/AppHeading.vue';
 
 export default {
   name: 'TheCalculator',
 
   components: {
-    Row,
-    Heading,
+    CalculatorRow,
+    AppHeading,
   },
+
+  mixins: [filtersMixin],
 
   data: () => ({
     from_amount: 0,
@@ -52,7 +54,14 @@ export default {
     to_currency: 'USD',
   }),
 
-  mixins: [filtersMixin],
+  computed: {
+    ...mapGetters('main', ['currecyOptions']),
+    ...mapState('main', ['rates']),
+
+    currentRate() {
+      return this.rates[this.to_currency];
+    },
+  },
 
   watch: {
     from_currency: {
@@ -69,15 +78,6 @@ export default {
       handler() {
         this.calcTo();
       },
-    },
-  },
-
-  computed: {
-    ...mapGetters('main', ['currecyOptions']),
-    ...mapState('main', ['rates']),
-
-    currentRate() {
-      return this.rates[this.to_currency];
     },
   },
 

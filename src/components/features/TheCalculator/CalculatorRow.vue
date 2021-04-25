@@ -1,30 +1,47 @@
 <template>
   <div class="converter-row">
-    <NumberInput
-      class="converter-row__input"
+    <AppNumberInput
       v-model.number="amountModel"
+      class="converter-row__input"
       type="number"
       @input="onInputAmount"
     />
-    <Select
-      class="converter-row__select"
-      @input="onChangeCurrency"
+    <AppSelect
       :value="currency"
       :options="options"
+      class="converter-row__select"
+      @input="onChangeCurrency"
     />
   </div>
 </template>
 
 <script>
-import NumberInput from '@/components/common/NumberInput.vue';
-import Select from '@/components/common/Select.vue';
+import AppNumberInput from '@/components/common/AppNumberInput.vue';
+import AppSelect from '@/components/common/AppSelect.vue';
 
 export default {
-  name: 'Row',
+  name: 'CalculatorRow',
 
   components: {
-    NumberInput,
-    Select,
+    AppNumberInput,
+    AppSelect,
+  },
+
+  props: {
+    amount: {
+      type: Number,
+      required: true,
+    },
+
+    currency: {
+      type: String,
+      required: true,
+    },
+
+    options: {
+      type: Array,
+      required: true,
+    },
   },
 
   data() {
@@ -36,21 +53,6 @@ export default {
   watch: {
     amount(value) {
       this.amountModel = value;
-    },
-  },
-
-  props: {
-    amount: {
-      type: Number,
-      required: true,
-    },
-    currency: {
-      type: String,
-      required: true,
-    },
-    options: {
-      type: Array,
-      required: true,
     },
   },
 

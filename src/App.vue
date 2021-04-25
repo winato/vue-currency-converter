@@ -1,26 +1,26 @@
 <template>
-  <Container>
+  <AppContainer>
     <TheCalculator/>
-    <CurrenciesList/>
-  </Container>
+    <TheCurrenciesList/>
+  </AppContainer>
 </template>
 
 <script>
-import TheCalculator from '@/components/TheCalculator.vue';
-import CurrenciesList from '@/components/features/CurrenciesList.vue';
-import Container from '@/components/common/Container.vue';
+import TheCalculator from '@/components/features/TheCalculator/TheCalculator.vue';
+import TheCurrenciesList from '@/components/features/TheCurrenciesList/TheCurrenciesList.vue';
+import AppContainer from '@/components/common/AppContainer.vue';
 
 export default {
   name: 'App',
 
   components: {
     TheCalculator,
-    CurrenciesList,
-    Container,
+    TheCurrenciesList,
+    AppContainer,
   },
 };
 </script>
 
 <style lang="scss">
-@import './scss/global.scss';
+  @import './scss/global.scss';
 </style>

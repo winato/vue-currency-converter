@@ -1,8 +1,8 @@
 <template>
   <input
     :value="value"
-    class="number-input"
     @input="onInput"
+    class="number-input"
   >
 </template>
 
