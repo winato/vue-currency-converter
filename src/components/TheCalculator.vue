@@ -1,12 +1,12 @@
 <template>
-  <div>
+  <div class="converter">
     <Heading
       tag="h1"
       :center="true"
     >
       Convert
     </Heading>
-    <div class="converter">
+    <div class="converter__container">
       <Row
         :amount.sync="from_amount"
         :currency.sync="from_currency"
@@ -109,20 +109,28 @@ export default {
 
 <style lang="scss">
   .converter {
-    position: relative;
-    z-index: 3;
-    padding: .3rem;
-    border-radius: .5rem;
-    background-color: rgb(255, 255, 255);
-    box-shadow: rgb(35, 55, 80 / 30%) 0 .25rem .875rem;
-
     @media screen and (min-width: 576px) {
-      padding: 3rem;
+      padding-top: 4rem;
     }
 
-    &__equal {
+    &__container {
+      position: relative;
+      z-index: 3;
+      padding: .3rem;
+      border-radius: .5rem;
+      background-color: rgb(255, 255, 255);
+      box-shadow: rgb(35, 55, 80 / 30%) 0 .25rem .875rem;
       text-align: center;
-      font-size: 2rem;
+
+      @media screen and (min-width: 576px) {
+        padding: 3rem;
+      }
+
+      &__equal {
+        text-align: center;
+        font-size: 2rem;
+      }
     }
   }
+
 </style>
