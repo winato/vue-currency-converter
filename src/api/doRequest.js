@@ -1,4 +1,5 @@
 import axios from 'axios';
+import baseUrl from '../config/constants';
 
 const doRequest = ({
   method,
@@ -9,7 +10,7 @@ const doRequest = ({
   method,
   data,
   params,
-  url,
+  url: `${baseUrl}${url}`,
 });
 
 export default doRequest;

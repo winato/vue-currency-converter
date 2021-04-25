@@ -2,7 +2,7 @@ import doRequest from './doRequest';
 
 const getRatesService = (from) => doRequest({
   methods: 'GET',
-  url: 'https://api.ratesapi.io/api/latest',
+  url: 'latest',
   params: {
     base: from,
   },

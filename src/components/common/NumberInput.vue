@@ -1,7 +1,7 @@
 <template>
   <input
     :value="value"
-    class="input"
+    class="number-input"
     @input="onInput"
   >
 </template>
@@ -26,7 +26,7 @@ export default {
 </script>
 
 <style lang="scss">
-  .input {
+  .number-input {
     height: 2.125rem;
     width: 100%;
     appearance: none;
